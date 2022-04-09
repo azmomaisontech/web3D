@@ -1,9 +1,12 @@
 import './app.css';
+import React from "react";
 
 export default function App() {
   return (
-    <div className="App">
-
-    </div>
+      <React.StrictMode>
+          <div className="App">
+              <h1>First web3D</h1>
+          </div>
+      </React.StrictMode>
   );
 }
