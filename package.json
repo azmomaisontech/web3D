@@ -5,6 +5,7 @@
   "dependencies": {
     "@react-three/cannon": "^6.2.0",
     "@react-three/fiber": "^8.0.10",
+    "prettier": "^2.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
