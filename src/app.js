@@ -44,7 +44,7 @@ function Points() {
 function Lines() {
   const [material, geometry] = React.useMemo(() => {
     const vertices = [0, 0, 0, 0, 1, 1, 0, 1, -1];
-    const material = new THREE.PointsMaterial({ color: "yellow" });
+    const material = new THREE.PointsMaterial({ color: "red" });
     let geometry = new THREE.BufferGeometry();
     geometry.setAttribute(
       "position",
