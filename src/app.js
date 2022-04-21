@@ -26,14 +26,17 @@ function Box(props) {
   );
 }
 
-function Points({ count = 1 }) {
-  const vertices = new Float32Array(count * 3);
-  for (let x = 0; x < count * 3; x++) {
-    vertices[x] = 0;
-  }
-  const material = new THREE.PointsMaterial({ color: "white", size: 1 });
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
+function Points() {
+  const [material, geometry] = React.useMemo(() => {
+    const vertices = [0, 0, 0];
+    const material = new THREE.PointsMaterial({ color: "yellow" });
+    let geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+    return [material, geometry];
+  }, []);
 
   return <points material={material} geometry={geometry} />;
 }
