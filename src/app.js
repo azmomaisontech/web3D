@@ -43,7 +43,7 @@ function Points() {
 
 function Lines() {
   const [material, geometry] = React.useMemo(() => {
-    const vertices = [0, 0, 0, 0, 1, 1, 0, 1, -1];
+    const vertices = [0, 0, 0, 0, 1, -1, 0, 1, 1];
     const material = new THREE.PointsMaterial({ color: "red" });
     let geometry = new THREE.BufferGeometry();
     geometry.setAttribute(
@@ -54,6 +54,26 @@ function Lines() {
   }, []);
 
   return <line material={material} geometry={geometry} />;
+}
+
+function LinesWithFaces() {
+  const geometry = React.useMemo(() => {
+    const vertices = [0, 0, 0, 0, 1, -1, 0, 1, 1];
+    const uvs = [0, 0, 0, 0, 1, -1];
+    let geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+    geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+    return geometry;
+  }, []);
+
+  return (
+    <mesh geometry={geometry}>
+      <meshBasicMaterial side={THREE.DoubleSide} color={"blue"} />
+    </mesh>
+  );
 }
 
 export default function App() {
@@ -68,7 +88,8 @@ export default function App() {
             <CameraControl />
             {/*<Box position={[0, 1, 1]} />*/}
             {/*<Points />*/}
-            <Lines />
+            {/*<Lines />*/}
+            <LinesWithFaces />
             <axesHelper args={[5]} />
           </React.Suspense>
         </Canvas>
