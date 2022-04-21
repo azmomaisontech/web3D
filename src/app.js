@@ -28,7 +28,7 @@ function Box(props) {
 
 function Points() {
   const [material, geometry] = React.useMemo(() => {
-    const vertices = [0, 0, 0];
+    const vertices = [0, 0, 0, 0, 1, 1, 0, 1, -1];
     const material = new THREE.PointsMaterial({ color: "yellow" });
     let geometry = new THREE.BufferGeometry();
     geometry.setAttribute(
@@ -41,6 +41,21 @@ function Points() {
   return <points material={material} geometry={geometry} />;
 }
 
+function Lines() {
+  const [material, geometry] = React.useMemo(() => {
+    const vertices = [0, 0, 0, 0, 1, 1, 0, 1, -1];
+    const material = new THREE.PointsMaterial({ color: "yellow" });
+    let geometry = new THREE.BufferGeometry();
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+    return [material, geometry];
+  }, []);
+
+  return <line material={material} geometry={geometry} />;
+}
+
 export default function App() {
   return (
     <React.StrictMode>
@@ -51,8 +66,9 @@ export default function App() {
         >
           <React.Suspense fallback={null}>
             <CameraControl />
-            <Box position={[0, 1, 1]} />
-            <Points />
+            {/*<Box position={[0, 1, 1]} />*/}
+            {/*<Points />*/}
+            <Lines />
             <axesHelper args={[5]} />
           </React.Suspense>
         </Canvas>
