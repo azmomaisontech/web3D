@@ -1,8 +1,8 @@
 import "./app.css";
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Box } from "./components/geometry";
-import { OrbitControl } from "./components/orbit-control";
+import { OrbitControl } from "./components/orbit-control/index";
+import { BoxWithLight, Floor } from "./components/lights";
 
 export default function App() {
   return (
@@ -14,7 +14,8 @@ export default function App() {
         >
           <React.Suspense fallback={null}>
             <OrbitControl />
-            <Box position={[0, 1, 1]} />
+            <BoxWithLight position={[0, 1, 1]} />
+            <Floor />
             <axesHelper args={[5]} />
           </React.Suspense>
         </Canvas>
