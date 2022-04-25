@@ -18,7 +18,7 @@ export default function App() {
             <OrbitControl />
             <Bulb position={[0, 3, 0]} />
             <BoxWithLight position={[0, 1, 1]} />
-            <Floor position={[0, -0.5, 0]} />
+            <Floor position={[0, -0.05, 0]} />
             <axesHelper args={[5]} />
           </React.Suspense>
         </Canvas>

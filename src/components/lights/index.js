@@ -9,7 +9,7 @@ export function BoxWithLight(props) {
   });
 
   return (
-    <mesh ref={ref} {...props} castShadow>
+    <mesh ref={ref} {...props} receiveShadow castShadow>
       <boxBufferGeometry />
       <meshPhysicalMaterial color={"blue"} />
     </mesh>
@@ -19,7 +19,7 @@ export function BoxWithLight(props) {
 export function Floor(props) {
   return (
     <mesh {...props} receiveShadow>
-      <boxBufferGeometry args={[20, 1, 10]} />
+      <boxBufferGeometry args={[20, 0.1, 10]} />
       <meshPhysicalMaterial />
     </mesh>
   );
