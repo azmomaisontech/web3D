@@ -2,7 +2,7 @@ import "./app.css";
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControl } from "./components/orbit-control/index";
-import { BoxWithTexture, Bulb, Floor } from "./components/texture";
+import { Background, BoxWithTexture, Bulb, Floor } from "./components/texture";
 
 export default function App() {
   return (
@@ -17,6 +17,7 @@ export default function App() {
             <ambientLight intensity={0.2} />
             <fog attach="fog" args={["white", 1, 10]} />
             <OrbitControl />
+            <Background />
             <Bulb position={[0, 3, 0]} />
             <BoxWithTexture position={[0, 1, 0]} />
             <Floor position={[0, -0.05, 0]} />

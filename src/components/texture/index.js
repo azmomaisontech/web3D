@@ -7,14 +7,20 @@ export function BoxWithTexture(props) {
   const texture = useLoader(THREE.TextureLoader, "/assets/wood.jpeg");
   useFrame(() => {
     ref.current.rotation.y += 0.01;
+    ref.current.rotation.x += 0.01;
   });
 
   return (
     <mesh ref={ref} {...props} receiveShadow castShadow>
-      <boxBufferGeometry />
+      <sphereBufferGeometry args={[1, 100, 100]} />
       <meshPhysicalMaterial fog={false} map={texture} />
     </mesh>
   );
+}
+
+export function Background() {
+  const texture = useLoader(THREE.TextureLoader, "/assets/autoshop.jpeg");
+  return <primitive attach="background" object={texture} />;
 }
 
 export function Floor(props) {
