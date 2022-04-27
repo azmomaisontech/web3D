@@ -10,7 +10,12 @@ export function BoxWithLight(props) {
   return (
     <mesh ref={ref} {...props} receiveShadow castShadow>
       <boxBufferGeometry />
-      <meshPhysicalMaterial color={"blue"} />
+      <meshPhysicalMaterial
+        color={"blue"}
+        transparent
+        opacity={0.7}
+        wireframe
+      />
     </mesh>
   );
 }
