@@ -4,7 +4,6 @@ import { useFrame } from "@react-three/fiber";
 export function BoxWithLight(props) {
   const ref = React.useRef();
   useFrame(() => {
-    ref.current.rotation.x += 0.01;
     ref.current.rotation.y += 0.01;
   });
 

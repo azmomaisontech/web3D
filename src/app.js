@@ -11,13 +11,14 @@ export default function App() {
         <Canvas
           shadows
           style={{ backgroundColor: "#222222" }}
-          camera={{ position: [3, 3, 3] }}
+          camera={{ position: [1, 5, 1] }}
         >
           <React.Suspense fallback={null}>
             <ambientLight intensity={0.2} />
+            <fog attach="fog" args={["white", 1, 10]} />
             <OrbitControl />
             <Bulb position={[0, 3, 0]} />
-            <BoxWithLight position={[0, 1, 1]} />
+            <BoxWithLight position={[0, 1, 0]} />
             <Floor position={[0, -0.05, 0]} />
             <axesHelper args={[5]} />
           </React.Suspense>
