@@ -11,7 +11,7 @@ export default function App() {
         <Canvas
           shadows
           style={{ backgroundColor: "#222222" }}
-          camera={{ position: [1, 5, 1] }}
+          camera={{ position: [3, 3, 3] }}
         >
           <React.Suspense fallback={null}>
             <ambientLight intensity={0.2} />

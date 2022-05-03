@@ -1,10 +1,11 @@
 import React from "react";
 import * as THREE from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
 
 export function BoxWithTexture(props) {
   const ref = React.useRef();
-  const texture = useLoader(THREE.TextureLoader, "/assets/wood.jpeg");
+  const texture = useTexture("/assets/wood.jpeg");
   useFrame(() => {
     ref.current.rotation.y += 0.01;
     ref.current.rotation.x += 0.01;
@@ -19,8 +20,13 @@ export function BoxWithTexture(props) {
 }
 
 export function Background() {
-  const texture = useLoader(THREE.TextureLoader, "/assets/autoshop.jpeg");
-  return <primitive attach="background" object={texture} />;
+  const { gl } = useThree();
+  const texture = useTexture("/assets/autoshop.jpeg");
+  const formatted = new THREE.WebGLCubeRenderTarget(
+    texture.image.height
+  ).fromEquirectangularTexture(gl, texture);
+
+  return <primitive attach="background" object={formatted.texture} />;
 }
 
 export function Floor(props) {
