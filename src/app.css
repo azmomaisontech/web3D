@@ -1,4 +1,15 @@
 .app {
   width: 100vw;
   height: 100vh;
+  position: relative;
+}
+
+.color-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  height: max-content;
+  z-index: 1;
+  cursor: pointer;
 }

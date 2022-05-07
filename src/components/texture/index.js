@@ -11,6 +11,18 @@ export function BoxWithTexture(props) {
     ref.current.rotation.x += 0.01;
   });
 
+  const onPointerDown = React.useCallback((e) => {
+    if (e.object.active) {
+      e.object.active = undefined;
+      window.activeMesh = undefined;
+    } else {
+      // Not advisable. using this for test purposes.
+      // use proper state instead
+      window.activeMesh = e.object;
+      e.object.active = true;
+    }
+  }, []);
+
   const onPointerEnter = React.useCallback((e) => {
     e.object.scale.x = 1.5;
     e.object.scale.y = 1.5;
@@ -18,9 +30,11 @@ export function BoxWithTexture(props) {
   }, []);
 
   const onPointerLeave = React.useCallback((e) => {
-    e.object.scale.x = 1;
-    e.object.scale.y = 1;
-    e.object.scale.z = 1;
+    if (!e.object.active) {
+      e.object.scale.x = 1;
+      e.object.scale.y = 1;
+      e.object.scale.z = 1;
+    }
   }, []);
 
   return (
@@ -29,6 +43,7 @@ export function BoxWithTexture(props) {
       {...props}
       receiveShadow
       castShadow
+      onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
     >
