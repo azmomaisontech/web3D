@@ -1,9 +1,6 @@
 import React from "react";
-import { extend, useThree } from "@react-three/fiber";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-extend({ OrbitControls });
+import { OrbitControls } from "@react-three/drei";
 
 export function OrbitControl() {
-  const { camera, gl } = useThree();
-  return <orbitControls args={[camera, gl.domElement]} />;
+  return <OrbitControls />;
 }

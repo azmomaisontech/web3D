@@ -11,9 +11,28 @@ export function BoxWithTexture(props) {
     ref.current.rotation.x += 0.01;
   });
 
+  const onPointerEnter = React.useCallback((e) => {
+    e.object.scale.x = 1.5;
+    e.object.scale.y = 1.5;
+    e.object.scale.z = 1.5;
+  }, []);
+
+  const onPointerLeave = React.useCallback((e) => {
+    e.object.scale.x = 1;
+    e.object.scale.y = 1;
+    e.object.scale.z = 1;
+  }, []);
+
   return (
-    <mesh ref={ref} {...props} receiveShadow castShadow>
-      <sphereBufferGeometry args={[1, 100, 100]} />
+    <mesh
+      ref={ref}
+      {...props}
+      receiveShadow
+      castShadow
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+    >
+      <boxBufferGeometry />
       <meshPhysicalMaterial fog={false} map={texture} />
     </mesh>
   );
